@@ -1,0 +1,68 @@
+﻿@model Coreplus.Sample.Api.Services.PractitionerService.CustomModelReportFinal
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<form method="post" enctype="multipart/form-data" asp-action="SearchRequest">
+    
+    <input asp-for="practionId"  hidden/>
+    <label>Start Date</label>
+    <input type="date" asp-for="startDate" />
+    <label>End Date</label>
+    <input type="date" asp-for="endDate" />
+    <input type="submit" value="Search" />
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                practionerId
+            </th>
+            <th>
+                Practitioner Name
+            </th>
+            <th>
+               Month
+            </th>
+            <th>
+               Total Cost
+            </th>
+            <th>
+                Total Revenue
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.CustomModelReportFinalList != null)
+        {
+            @foreach (var item in Model.CustomModelReportFinalList)
+            {
+                <tr>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.practionId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PractitionerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Month)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalCost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalRevenue)
+                    </td>
+
+                    <td>
+
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
